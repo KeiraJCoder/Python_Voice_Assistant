@@ -1,96 +1,68 @@
 
-# Speech Recognition and Response Project
+# Voice-Activated Assistant with OpenAI
 
-This project utilizes speech recognition to transcribe audio input from the user, generates a response using OpenAI's GPT model, and reads the response back to the user using text-to-speech.
+This project is a voice-activated assistant named "Frankie" that uses OpenAI's GPT model for generating responses to spoken queries. It utilizes Google's Web Speech API for speech recognition and the `pyttsx3` library for offline text-to-speech conversion.
 
 ## Prerequisites
 
-Before you begin, ensure you have met the following requirements:
+Before running the assistant, ensure you have the following:
 
-- Windows 10 or later
-- Python 3.8 or newer installed
+- Python 3.6 or newer installed on your system.
+- An OpenAI API key. You can obtain one by signing up at [OpenAI](https://openai.com/).
 
-## Installation
+## Setup
 
-Follow these steps to set up the project environment on Windows:
+1. **Clone the Repository**  
+   Clone this repository to your local machine or download the source code.
 
-### 1. Clone the Repository
+2. **Create a Virtual Environment**  
+   Navigate to the project directory and create a virtual environment:
+   ```bash
+   python -m venv venv
+   ```
+   Activate the virtual environment:
+   - On Windows: `.env\Scriptsctivate`
+   - On macOS/Linux: `source venv/bin/activate`
 
-Clone the project repository to your local machine using Git:
+3. **Install Dependencies**  
+   Install the required Python libraries using pip:
+   ```bash
+   pip install openai pyttsx3 SpeechRecognition
+   ```
 
-```
-git clone [repository-url]
-cd [local-repository]
-```
-
-Replace `[repository-url]` with the URL of the project's repository and `[local-repository]` with the name of the folder where you cloned the project.
-
-### 2. Create a Virtual Environment
-
-Open a command prompt in the project directory and run:
-
-```
-python -m venv venv
-```
-
-Activate the virtual environment:
-
-```
-.\venv\Scripts\activate
-```
-
-### 3. Install Dependencies
-
-Install the required Python packages:
-
-```
-pip install openai pyttsx3 SpeechRecognition PyAudio
-```
-
-#### Installing PyAudio
-
-If you encounter any issues installing PyAudio with pip, you may need to install a precompiled PyAudio wheel for Windows. Download the appropriate `.whl` file from [Christoph Gohlke's Unofficial Windows Binaries for Python Extension Packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio) and install it using:
-
-```
-pip install path/to/PyAudio-*.whl
-```
-
-Replace `path/to/PyAudio-*.whl` with the actual path to the downloaded `.whl` file.
-
-### 4. Set Up OpenAI API Key
-
-1. Obtain an API key from [OpenAI](https://openai.com/).
-2. Set the API key as an environment variable on your system:
-
-For a temporary setup, in your command prompt, run:
-
-```
-set OPENAI_API_KEY=your_api_key_here
-```
-
-For a permanent setup, search for "Environment Variables" in Windows search and add `OPENAI_API_KEY` as a new system variable.
-
-Replace `your_api_key_here` with your actual OpenAI API key.
+4. **Set Up Your OpenAI API Key**  
+   For security reasons, it's best to set your OpenAI API key as an environment variable.  
+   - On Windows (in Command Prompt):
+     ```cmd
+     setx OPENAI_API_KEY "Your-OpenAI-API-Key"
+     ```
+   - On macOS/Linux (in bash):
+     ```bash
+     echo 'export OPENAI_API_KEY="Your-OpenAI-API-Key"' >> ~/.bash_profile
+     source ~/.bash_profile
+     ```
+   Replace `Your-OpenAI-API-Key` with your actual OpenAI API key.
 
 ## Running the Program
 
-With the virtual environment activated and the OpenAI API key set, you can run the program by executing:
+To run the assistant, activate your virtual environment if it's not already activated, then execute the main Python script:
 
-```
+```bash
 python main.py
 ```
 
-Ensure your microphone is properly configured and say "Hey Frankie" to activate the recording, followed by your question or command.
+Upon running, the program will instruct you to say "Hey Frankie" to start recording your question, or "Exit" to quit. The assistant will process your spoken question, generate a response using the OpenAI API, and speak the response back to you.
 
 ## Troubleshooting
 
-- **PyAudio Installation Issues:** Ensure you have the Microsoft Visual C++ Build Tools installed. If PyAudio still fails to install, use the precompiled `.whl` method as described above.
-- **Microphone Not Recognized:** Check your system's sound settings to ensure your microphone is set as the default recording device.
+- **Microphone Access**: Ensure your system has microphone access enabled for Python or the terminal you're using.
+- **API Key**: If the program exits with a message about the OpenAI API key not being found, double-check that your environment variable is correctly set.
+- **Dependencies**: Make sure all dependencies were installed successfully without errors. Some libraries may require additional system dependencies.
 
 ## Contributing
 
-Instructions for how contributors can help with your project.
+Contributions to the project are welcome! Please feel free to fork the repository, make changes, and submit pull requests.
 
 ## License
 
-Specify the license under which your project is made available.
+This project is open-sourced under the MIT License. See the LICENSE file for more details.
